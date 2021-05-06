@@ -34,7 +34,6 @@ ul li {
 
 a {
   text-decoration: none !important;
-  color: white;
   cursor: pointer;
 }
 
