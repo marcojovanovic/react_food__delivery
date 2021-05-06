@@ -5,6 +5,7 @@ import Home from './pages/Home'
 
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Products from './pages/Products';
 import GlobalStyle from './theme/globalStyle'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
+              <Route exact path="/about" component={Products} />
               <Route exact path="/contact" component={Contact} />
             </Switch>
         </Router>
