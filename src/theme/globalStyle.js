@@ -25,8 +25,8 @@ html {
 
 body {
   background: #f5f5f5;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.5;
+  font-family: 'Space Mono', monospace;
+  line-height: 1.7;
 }
 ul li {
   list-style: none;
@@ -95,25 +95,6 @@ hr {
 .text-center {
   text-align: center;
   margin-top: 1.5rem;
-}
-
-
-
-.blogPost__container {
-  display: grid;
-  grid-gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-  padding:10rem 8rem;
-  background: #e6e6e6;
-}
-
-
-@media screen and (max-width: 750px) {
-  .blogPost__container {
-     padding:1rem;
-     margin:auto;
-    
-  }
 }
 
 

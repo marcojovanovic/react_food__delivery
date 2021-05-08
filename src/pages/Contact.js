@@ -1,47 +1,120 @@
 import React from 'react';
 import styled from 'styled-components';
 import foodImage from '../img/header-bg.jpg';
-import {orderFirestore} from '../firebase/config'
+import { orderFirestore } from '../firebase/config';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.min.css';
 
+import Notification from '../components/Notification.js'
+
+
+const schema = yup.object().shape({
+  firstName: yup
+    .string()
+    .required('Ime i Prezime mora imati bar 3 slovna karaktera')
+    .min(3),
+  address: yup
+    .string()
+    .required('Adresa mora imati bar 3 slovna karaktera')
+    .min(3),
+  telephone: yup.number().required(),
+  orders: yup.string().required('Pravilno popunite polje porudzbina'),
+});
 
 function Contact() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
+  const notify = () => toast(<Notification />);
+
+  const pushToFirebase = async(data) => {
+   
+    await orderFirestore.collection('orders').add({
+      ...data, 
+     
+     })  
+     .then(data=>{
+       console.log(data)
+
+     }).catch(e=>{
+
+       console.log(e)
+
+     })
+     notify()
+     reset();
+
+  };
+
   return (
     <ContactContainer back={foodImage}>
       <OrderImg>
         <img src="/assets/order.png" alt="" />
       </OrderImg>
-
+      <ToastContainer
+      position="top-left"
+      autoClose={3000}
+      draggable
+      pauseOnHover
+      
+      ></ToastContainer>
       <FormContainer>
-        <form>
-          <Label htmlFor="naslov">Ime i Prezime</Label>
+        <form onSubmit={handleSubmit(pushToFirebase)}>
+          <Label htmlFor="name">Ime i Prezime</Label>
           <FormField>
-            <input type="text" name="naslov" required autoComplete="off" />
+            <input
+              type="text"
+              name="firstName"
+              autoComplete="off"
+              {...register('firstName')}
+            />
+          </FormField>
+          <ErrorField>{errors.firstName?.message}</ErrorField>
+          <Label htmlFor="address">Adresa</Label>
+          <FormField>
+            <input
+              type="text"
+              name="address"
+              autoComplete="off"
+              {...register('address')}
+            />
           </FormField>
 
-          <div className="form-group"></div>
-
-          <Label htmlFor="Img">Adresa</Label>
+          <ErrorField>{errors.address?.message}</ErrorField>
+          <Label htmlFor="telephone">Broj Telefona</Label>
           <FormField>
-            <input type="text" name="imgURL" required autoComplete="off" />
+            <input
+              type="number"
+              name="telephone"
+              autoComplete="off"
+              {...register('telephone')}
+            />
           </FormField>
-
-          <div className="form-group">
-            <Label htmlFor="Autor">Broj Telefona</Label>
-            <FormField>
-              <input type="text" name="autor" required autoComplete="off" />
-            </FormField>
-          </div>
-          <Label htmlFor="naslov">Porudzbina</Label>
+          <ErrorField>
+            {errors.telephone && 'Pravilno popunite polje telefon'}
+          </ErrorField>
+          <Label htmlFor="orders">Porudzbina</Label>
           <FormField>
             <textarea
               type="text"
-              name="sadrzaj"
+              name="orders"
               rows="12"
-              required
               autoComplete="off"
+              {...register('orders')}
             ></textarea>
           </FormField>
-          <Button>Poruci</Button>
+          <ErrorField>{errors.orders?.message}</ErrorField>
+          <Button type="submit">Poruči</Button>
         </form>
       </FormContainer>
     </ContactContainer>
@@ -59,7 +132,7 @@ const ContactContainer = styled.div`
   overflow: hidden;
 `;
 
-const Button = styled.div`
+const Button = styled.button`
   font-weight: bold;
   color: white;
   line-height: 2.5rem;
@@ -71,13 +144,20 @@ const Button = styled.div`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   text-align: center;
-  margin-top: 6rem;
+  margin: 4rem auto;
   letter-spacing: 0.4rem;
+  width: 30%;
 
   &:hover {
     box-shadow: 0 0.5em 0.5em -0.4em #ff923cba;
     background-size: 100% 100%;
     transform: translateY(-0.15em);
+  }
+
+  @media only screen and (max-width:700px){
+
+    width:100%;
+
   }
 `;
 
@@ -98,15 +178,6 @@ const OrderImg = styled.div`
   & img {
     margin-top: 5vh;
   }
-`;
-
-const Title = styled.div`
-  font-family: 'Pacifico', cursive;
-  text-align: center;
-  font-size: 3rem;
-  transform: translateY(5rem);
-  margin-bottom: 10rem;
-  letter-spacing: 0.5rem;
 `;
 
 const FormField = styled.div`
@@ -137,6 +208,11 @@ const Label = styled.label`
   font-weight: 600;
   font-size: 2.1rem;
   color: white;
+`;
+
+const ErrorField = styled.p`
+  color: #c33e3f;
+  font-size: 1.3rem;
 `;
 
 export default Contact;
