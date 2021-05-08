@@ -56,9 +56,7 @@ textarea {
   border: none;
   outline: none;
   resize: none;
-  background: url('https://img.freepik.com/free-photo/design-space-paper-textured-background_53876-42312.jpg?size=626&ext=jpg&ga=GA1.2.1950443642.1616284800')
-    center no-repeat;
-  background-size: cover;
+  padding:0 !important;
   font-weight: bold;
 }
 

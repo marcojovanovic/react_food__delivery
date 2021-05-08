@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+
+import { products } from '../data';
 
 function Products() {
-  return (
-    <div>
-      
-    </div>
-  )
+  const [foodItems, setFoodItems] = useState(products);
+
+ 
+
+  console.log(foodItems);
+
+  return <div></div>;
 }
 
-export default Products
+export default Products;

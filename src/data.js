@@ -1,6 +1,5 @@
 
-
-export default [
+export const products= [
     {
         id:1,
         image: '/public/assets/products/bakin.png',
@@ -98,6 +97,6 @@ export default [
         name: 'Kokice',
         category: 'brza-hrana',
         cena: 120
-    },
+    }
     
 ];
