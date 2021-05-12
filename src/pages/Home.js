@@ -29,7 +29,7 @@ function Home() {
         <NavbarUl>
           <RubberBand>
             <li>
-              <Link to="/about">Prodavnica</Link>
+              <Link to="/location">Nasa Lokacija</Link>
             </li>
             <li>
               <Link to="/products">Proizvodi</Link>

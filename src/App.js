@@ -2,11 +2,13 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import React from 'react';
-import About from './pages/About';
+import Location from './pages/Location';
 import Contact from './pages/Contact';
 import Products from './pages/Products';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './theme/globalStyle';
+import 'mapbox-gl/dist/mapbox-gl.css'
+
 
 import { FoodContext } from './context';
 
@@ -21,7 +23,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
+            <Route exact path="/location" component={Location} />
             <Route exact path="/products" component={Products} />
             <Route exact path="/contact" component={Contact} />
           </Switch>

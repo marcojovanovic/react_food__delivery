@@ -98,6 +98,25 @@ hr {
 }
 
 
+.variable-height{
+
+  min-height:100vh !important;
+
+}
+
+.slick-track{
+  height:100vh;
+  width:100vw;
+}
+
+  
+.slick-slide img {
+  
+   object-fit:cover;
+   width:100%;
+   
+  
+}
 `;
 
-export default GlobalStyle
+export default GlobalStyle;
