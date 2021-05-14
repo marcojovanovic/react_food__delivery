@@ -10,8 +10,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import { CgSun } from 'react-icons/cg';
 import { HiMoon } from 'react-icons/hi';
-import Notification from './components/Notification.js'
-
+import Notification from './components/Notification.js';
 
 const schema = yup.object().shape({
   firstName: yup
@@ -32,7 +31,7 @@ const FoodProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
   const [foodItems, setFoodItems] = useState(products);
   const [menuItems, setMenuItems] = useState(products);
-  const [sidebar, setSidebar]=useState(false)
+  const [sidebar, setSidebar] = useState(false);
 
   // Location
 
@@ -56,9 +55,10 @@ const FoodProvider = ({ children }) => {
 
   const LightTheme = {
     pageBackground: '#f5f5f5',
-    linkColor: '#fff',
+    linkColor: '#333',
     divColor: '#e22255',
     toggleColor: '#e22255',
+    sideColor: 'white',
   };
 
   const DarkTheme = {
@@ -66,13 +66,13 @@ const FoodProvider = ({ children }) => {
     linkColor: '#f5f5f5',
     divColor: '#bc3e5f',
     toggleColor: '#bc3e5f',
+    sideColor: 'rgba(0,0,0,0.3)',
   };
 
   const themes = {
     light: LightTheme,
     dark: DarkTheme,
   };
-
 
   const changeTheme = () => {
     if (theme === 'light') {
@@ -82,18 +82,9 @@ const FoodProvider = ({ children }) => {
     }
   };
 
-
-  const bringBackSide = () =>{
-
-    setSidebar(!sidebar)
-
-   
-
-
-  }
-
- 
-  
+  const bringBackSide = () => {
+    setSidebar(!sidebar);
+  };
 
   const icon = theme === 'dark' ? <HiMoon size={40} /> : <CgSun size={40} />;
 
@@ -117,22 +108,16 @@ const FoodProvider = ({ children }) => {
 
   // Firebase contact
 
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-
   const notify = () => toast(<Notification />);
-
-
-
-
 
   const pushToFirebase = async (data) => {
     await orderFirestore
@@ -149,9 +134,6 @@ const FoodProvider = ({ children }) => {
     notify();
     reset();
   };
-
-
-
 
   return (
     <FoodContext.Provider
@@ -172,14 +154,14 @@ const FoodProvider = ({ children }) => {
         pushToFirebase,
         toast,
         ToastContainer,
-        register, 
+        register,
         errors,
         handleSubmit,
         icon,
         changeTheme,
         sidebar,
         setSidebar,
-        bringBackSide
+        bringBackSide,
       }}
     >
       {children}

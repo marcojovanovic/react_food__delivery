@@ -17,7 +17,7 @@ function Contact() {
   return (
     <ContactContainer back={foodImage}>
       <OrderImg>
-        <img src="/assets/order.png" alt="" />
+        <img src="/assets/Contact/order.png" alt="" />
       </OrderImg>
       <ToastContainer
         position="top-left"

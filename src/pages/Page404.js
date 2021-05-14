@@ -4,7 +4,7 @@ import styled from 'styled-components'
 function Page404() {
   return (
     <PageContent>
-      <img src='/assets/page404.png'  alt='' />
+      <img src='/assets/NoPage/page404.png'  alt='' />
     </PageContent>
   )
 }

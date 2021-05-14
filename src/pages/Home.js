@@ -21,7 +21,7 @@ function Home() {
         <Navbar />
         <DonaImg>
           <Roll left delay={1000}>
-            <img src="/assets/dona.png" alt="" />
+            <img src="/assets/mainImg/dona.png" alt="" />
           </Roll>
         </DonaImg>
       </HomeImg>
@@ -38,7 +38,7 @@ function Home() {
 
       <IceCreamImg>
         <Rotate>
-          <img src="/assets/iceCream.png" alt="" />
+          <img src="/assets/mainImg/iceCream.png" alt="" />
         </Rotate>
       </IceCreamImg>
     </HomeContainer>
