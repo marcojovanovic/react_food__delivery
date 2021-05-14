@@ -1,60 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import foodImage from '../img/header-bg.jpg';
-import { orderFirestore } from '../firebase/config';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.min.css';
 
-import Notification from '../components/Notification.js'
-
-
-const schema = yup.object().shape({
-  firstName: yup
-    .string()
-    .required('Ime i Prezime mora imati bar 3 slovna karaktera')
-    .min(3),
-  address: yup
-    .string()
-    .required('Adresa mora imati bar 3 slovna karaktera')
-    .min(3),
-  telephone: yup.number().required(),
-  orders: yup.string().required('Pravilno popunite polje porudzbina'),
-});
+import { FoodContext } from '../context';
 
 function Contact() {
   const {
+    pushToFirebase,
+    toast,
+    ToastContainer,
     register,
+    errors,
     handleSubmit,
-    formState: { errors },
-    reset
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-
-  const notify = () => toast(<Notification />);
-
-  const pushToFirebase = async(data) => {
-   
-    await orderFirestore.collection('orders').add({
-      ...data, 
-     
-     })  
-     .then(data=>{
-       console.log(data)
-
-     }).catch(e=>{
-
-       console.log(e)
-
-     })
-     notify()
-     reset();
-
-  };
+  } = React.useContext(FoodContext);
 
   return (
     <ContactContainer back={foodImage}>
@@ -62,11 +20,10 @@ function Contact() {
         <img src="/assets/order.png" alt="" />
       </OrderImg>
       <ToastContainer
-      position="top-left"
-      autoClose={3000}
-      draggable
-      pauseOnHover
-      
+        position="top-left"
+        autoClose={3000}
+        draggable
+        pauseOnHover
       ></ToastContainer>
       <FormContainer>
         <form onSubmit={handleSubmit(pushToFirebase)}>
@@ -154,10 +111,8 @@ const Button = styled.button`
     transform: translateY(-0.15em);
   }
 
-  @media only screen and (max-width:700px){
-
-    width:100%;
-
+  @media only screen and (max-width: 700px) {
+    width: 100%;
   }
 `;
 

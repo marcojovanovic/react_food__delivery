@@ -3,7 +3,7 @@ export const products = [
     id: 1,
     image: '/assets/products/bakin.png',
     name: 'Bakin kolac',
-    category: 'kolac',
+    category: 'desert',
     cena: 120,
   },
 
@@ -11,14 +11,14 @@ export const products = [
     id: 2,
     image: '/assets/products/cock.png',
     name: 'Coca-Cola',
-    category: 'pica',
+    category: 'sokovi',
     cena: 180,
   },
   {
     id: 3,
     image: '/assets/products/dobos torta.png',
     name: 'Dobos torta',
-    category: 'kolac',
+    category: 'desert',
     cena: 320,
   },
   {
@@ -48,7 +48,7 @@ export const products = [
     id: 7,
     image: '/assets/products/kafa2.png',
     name: 'Espresso',
-    category: 'pica',
+    category: 'kafe',
     cena: 100,
   },
   {
@@ -76,7 +76,7 @@ export const products = [
     id: 11,
     image: '/assets/products/dona.png',
     name: 'Krofna',
-    category: 'kolac',
+    category: 'desert',
     cena: 89,
   },
 ];

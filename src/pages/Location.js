@@ -1,24 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
 import ReactMapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import styled from 'styled-components';
 
+import {FoodContext} from '../context'
+
 function Location() {
-  const [viewport, setViewport] = useState({
-    width: '100vw',
-    height: '100vh',
-    latitude: 44.61909788,
-    longitude: 21.1765210699899,
-    zoom: 13,
-    pitch: 50,
-  });
-
-  const [showPopup, togglePopup] = React.useState(false);
-
-  const navControlStyle = {
-    right: 10,
-    top: 10,
-  };
+ 
+  const {viewport, setViewport, showPopup, togglePopup,navControlStyle} = React.useContext(FoodContext)
 
   return (
     <>

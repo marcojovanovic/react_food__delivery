@@ -1,35 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import styled from 'styled-components';
 import foodImage from '../img/candy1.png';
-import { products } from '../data';
+
+import { FoodContext } from '../context';
 
 function Products() {
-  const [foodItems, setFoodItems] = useState(products);
-
-  const [menuItems, setMenuItems] = useState(products);
-
-  const [buttonValue, setButtonValue] = useState('');
-
-  const categories = ['all', foodItems.map((item) => item.category)].flat();
-
-  const uniqueCategories = Array.from(new Set(categories));
-
-  const filtered = (buttonValue) => {
-    if (buttonValue === 'all') {
-      setMenuItems(products);
-    } else {
-      let filteredItems = foodItems.filter(
-        (item) => item.category === buttonValue
-      );
-
-      setMenuItems(filteredItems);
-    }
-  };
+  const { menuItems, uniqueCategories, filtered } = React.useContext(
+    FoodContext
+  );
 
   return (
     <FoodMainWrapper back={foodImage}>
-      <FoodMainTitle>Klikom sortiraj hranu u prodavnici !!!</FoodMainTitle>
+      <FoodMainTitle>Sortiraj hranu u prodavnici !!!</FoodMainTitle>
       <ButtonWrapper>
         {uniqueCategories.map((item, index) => {
           return (
@@ -47,7 +30,9 @@ function Products() {
             <FoodCard key={id}>
               <FoodImage src={image} alt="food image" />
               <FoodTitle>{name}</FoodTitle>
-              <FoodPrice>{cena} din</FoodPrice>
+             
+                <FoodPrice>{cena} din</FoodPrice>
+            
             </FoodCard>
           );
         })}
@@ -67,12 +52,13 @@ const FoodMainWrapper = styled.div`
   padding: 4vh 2vw;
 `;
 
+
 const FoodContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, 25rem);
   place-content: center;
   grid-gap: 5rem 4vw;
-  margin-top: 9vh;
+  margin-top: 10vh;
 `;
 
 const FoodTitle = styled.h1`
@@ -84,14 +70,24 @@ const FoodTitle = styled.h1`
 const FoodMainTitle = styled.h1`
   text-align: center;
   color: white;
-  font-size: calc(2rem + 0.3vw);
+  font-size: calc(3rem + 0.3vw);
+  text-transform: uppercase;
+  margin: 3rem 0;
 `;
 
 const FoodPrice = styled.h3`
   font-size: calc(0.9rem + 0.4vw);
-  transform: translate(-7.5rem, -34.2rem);
+  transform:rotate(-30deg);
+  position:absolute;
+  top:5%;
+  left:-5%;
   color: #c33e3f;
+  background:#444;
+  border-radius:10px;
+  width:50%;
 `;
+
+
 
 const FoodCard = styled.div`
   width: 26rem;
@@ -99,6 +95,7 @@ const FoodCard = styled.div`
   text-align: center;
   border: 2px solid #333;
   border-radius: 10px;
+  position:relative;
 `;
 
 const FoodImage = styled.img`
@@ -111,6 +108,7 @@ const FoodImage = styled.img`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin: 5rem auto;
 `;
 
