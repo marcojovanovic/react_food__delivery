@@ -8,7 +8,8 @@ import * as yup from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-
+import { CgSun } from 'react-icons/cg';
+import { HiMoon } from 'react-icons/hi';
 import Notification from './components/Notification.js'
 
 
@@ -31,6 +32,7 @@ const FoodProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
   const [foodItems, setFoodItems] = useState(products);
   const [menuItems, setMenuItems] = useState(products);
+  const [sidebar, setSidebar]=useState(false)
 
   // Location
 
@@ -70,6 +72,30 @@ const FoodProvider = ({ children }) => {
     light: LightTheme,
     dark: DarkTheme,
   };
+
+
+  const changeTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+
+
+  const bringBackSide = () =>{
+
+    setSidebar(!sidebar)
+
+   
+
+
+  }
+
+ 
+  
+
+  const icon = theme === 'dark' ? <HiMoon size={40} /> : <CgSun size={40} />;
 
   // Product page filtering
 
@@ -124,6 +150,9 @@ const FoodProvider = ({ children }) => {
     reset();
   };
 
+
+
+
   return (
     <FoodContext.Provider
       value={{
@@ -145,7 +174,12 @@ const FoodProvider = ({ children }) => {
         ToastContainer,
         register, 
         errors,
-        handleSubmit
+        handleSubmit,
+        icon,
+        changeTheme,
+        sidebar,
+        setSidebar,
+        bringBackSide
       }}
     >
       {children}

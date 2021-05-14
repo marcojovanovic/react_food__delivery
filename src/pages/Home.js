@@ -1,51 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
 import foodImage from '../img/foodCentral.png';
-import { CgSun } from 'react-icons/cg';
-import { HiMoon } from 'react-icons/hi';
+
 import { FoodContext } from '../context';
-import RubberBand from 'react-reveal/RubberBand';
+import Navbar from '../components/Navbar';
 import Rotate from 'react-reveal/Rotate';
 import Slide from 'react-reveal/Slide';
 import Roll from 'react-reveal/Roll';
 
+import { FaBars } from 'react-icons/fa';
+
 function Home() {
-  const { theme, setTheme } = React.useContext(FoodContext);
-
-  const changeTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
-
-  const icon = theme === 'dark' ? <HiMoon size={40} /> : <CgSun size={40} />;
+  const { icon, changeTheme, 
+    bringBackSide } = React.useContext(FoodContext);
 
   return (
     <HomeContainer>
       <HomeImg>
-        <NavbarUl>
-          <RubberBand>
-            <li>
-              <Link to="/location">Nasa Lokacija</Link>
-            </li>
-            <li>
-              <Link to="/products">Proizvodi</Link>
-            </li>
-            <li>
-              <Link to="/contact">Naruci Hranu</Link>
-            </li>
-          </RubberBand>
-        </NavbarUl>
-
+        <Navbar />
         <DonaImg>
           <Roll left delay={1000}>
             <img src="/assets/dona.png" alt="" />
           </Roll>
         </DonaImg>
       </HomeImg>
+
+      <FaBars onClick={bringBackSide} className="bars" color="#333" size={40} />
 
       <CreativeDiv back={foodImage}></CreativeDiv>
 
@@ -68,6 +49,21 @@ const HomeContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   background-color: ${(props) => props.theme.pageBackground};
+
+  // icon class
+
+  .bars {
+    position: absolute;
+    top: 5%;
+    left: 15%;
+    cursor: pointer;
+
+    @media screen and (max-width: 1100px) {
+      left:90%;
+  }
+  }
+
+ 
 `;
 
 const HomeImg = styled.div`
@@ -86,8 +82,9 @@ const CreativeDiv = styled.div`
   background: url(${(props) => (props.back ? props.back : 'lightblue')});
   background-position: center;
   background-size: cover;
-  width: 40rem;
-  height: 40rem;
+  width: calc(30rem + 5vw);
+  height: calc(30rem + 5vw);
+
   transition: all 0.3s ease-in;
   cursor: pointer;
   clip-path: polygon(
@@ -104,36 +101,54 @@ const CreativeDiv = styled.div`
   &:hover {
     transform: translate(-50%, -50%) rotate(0);
   }
+
+  @media screen and (max-width: 700px) {
+    width: 20rem;
+    height: 20rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    transform: translate(-30%, 30%) rotate(-20deg);
+
+
+    
+  &:hover {
+    transform: translate(-30%, 30%) rotate(0);
+  }
+  }
+  @media screen and (max-width: 500px) {
+    transform: translate(-10%, 80%) rotate(-20deg);
+    width: 13rem;
+    height: 13rem;
+
+    &:hover {
+    transform: translate(-10%, 80%) rotate(0);
+  }
+  }
+  
+ 
 `;
 
 const DonaImg = styled.div`
-  width: 20rem;
+  width: calc(18rem + 0.5vw);
   position: absolute;
   bottom: 5%;
   left: 40%;
   background: transparent;
+
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const IceCreamImg = styled.div`
-  width: 20rem;
+  width: calc(18rem + 0.5vw);
   position: absolute;
   right: 4%;
   bottom: 5%;
-`;
 
-const NavbarUl = styled.ul`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-
-  & li {
-    margin-top: calc(2vh + 1vw);
-    font-size: calc(1.1rem + 0.6vw);
-    color: ${(props) => props.theme.linkColor};
-  }
-
-  & a {
-    color: ${(props) => props.theme.linkColor};
+  @media screen and (max-width: 1200px) {
+    display: none;
   }
 `;
 
@@ -152,6 +167,13 @@ const Toggle = styled.button`
   position: absolute;
   right: 8%;
   top: 5%;
+
+  @media screen and (max-width: 1100px) {
+    position: absolute;
+    left: 8%;
+    top: 5%;
+    border: 1px solid white;
+  }
 `;
 
 export default Home;
