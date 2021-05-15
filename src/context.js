@@ -82,6 +82,8 @@ const FoodProvider = ({ children }) => {
     }
   };
 
+// sidebar toggle function
+
   const bringBackSide = () => {
     setSidebar(!sidebar);
   };
@@ -117,7 +119,12 @@ const FoodProvider = ({ children }) => {
     resolver: yupResolver(schema),
   });
 
+  // contact page notification
+
   const notify = () => toast(<Notification />);
+
+
+  // push contact information to firestore
 
   const pushToFirebase = async (data) => {
     await orderFirestore

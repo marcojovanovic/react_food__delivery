@@ -12,7 +12,7 @@ function Location() {
     <>
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken="pk.eyJ1IjoibWFyY29qb3Zhbm92aWMiLCJhIjoiY2tvazh5NmN3MGU5ajJ1bDh5dXhhczg5aCJ9.cxfoaG0wf1yi3G8GnAftkQ"
+        mapboxApiAccessToken= {process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle={'mapbox://styles/mapbox/dark-v9'}
       >

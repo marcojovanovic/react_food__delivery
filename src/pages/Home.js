@@ -7,13 +7,13 @@ import { FoodContext } from '../context';
 import Navbar from '../components/Navbar';
 import Rotate from 'react-reveal/Rotate';
 import Slide from 'react-reveal/Slide';
+
 import Roll from 'react-reveal/Roll';
 
 import { FaBars } from 'react-icons/fa';
 
 function Home() {
-  const { icon, changeTheme, 
-    bringBackSide } = React.useContext(FoodContext);
+  const { icon, changeTheme, bringBackSide } = React.useContext(FoodContext);
 
   return (
     <HomeContainer>
@@ -46,9 +46,15 @@ function Home() {
 }
 
 const HomeContainer = styled.div`
-  height: 100vh;
+ height: 100vh;
   overflow: hidden;
   background-color: ${(props) => props.theme.pageBackground};
+
+
+
+  @media screen and (max-width: 600px) {
+      height:130vh;
+    }
 
   // icon class
 
@@ -59,11 +65,9 @@ const HomeContainer = styled.div`
     cursor: pointer;
 
     @media screen and (max-width: 1100px) {
-      left:90%;
+      left: 90%;
+    }
   }
-  }
-
- 
 `;
 
 const HomeImg = styled.div`
@@ -110,11 +114,9 @@ const CreativeDiv = styled.div`
   @media screen and (max-width: 600px) {
     transform: translate(-30%, 30%) rotate(-20deg);
 
-
-    
-  &:hover {
-    transform: translate(-30%, 30%) rotate(0);
-  }
+    &:hover {
+      transform: translate(-30%, 30%) rotate(0);
+    }
   }
   @media screen and (max-width: 500px) {
     transform: translate(-10%, 80%) rotate(-20deg);
@@ -122,11 +124,9 @@ const CreativeDiv = styled.div`
     height: 13rem;
 
     &:hover {
-    transform: translate(-10%, 80%) rotate(0);
+      transform: translate(-10%, 80%) rotate(0);
+    }
   }
-  }
-  
- 
 `;
 
 const DonaImg = styled.div`

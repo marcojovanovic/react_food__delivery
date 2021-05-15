@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom';
 import { FoodContext } from '../context';
 
 function Navbar() {
-  const { sidebar } = React.useContext(FoodContext);
+  const { sidebar, setSidebar } = React.useContext(FoodContext);
 
   return (
     <>
       <NavbarUl sidebar={sidebar}>
         <NavbarLi>
-          <Link to="#">Dokumentacija</Link>
+          <Link onClick={()=> setSidebar(false)}  to="#">Dokumentacija</Link>
         </NavbarLi>
         <NavbarLi>
-          <Link to="/contact">Naruci Hranu</Link>
+          <Link onClick={()=> setSidebar(false)}  to="/contact">Naruci Hranu</Link>
         </NavbarLi>
         <NavbarLi>
-          <Link to="/products">Menu</Link>
+          <Link onClick={()=> setSidebar(false)}  to="/products">Menu</Link>
         </NavbarLi>
         <NavbarLi>
-          <Link to="/location">Nasa Lokacija</Link>
+          <Link onClick={()=> setSidebar(false)}  to="/location">Nasa Lokacija</Link>
         </NavbarLi>
       </NavbarUl>
     </>
@@ -41,6 +41,11 @@ const NavbarUl = styled.ul`
   transition: all 0.3s ease-in-out;
   color: #333;
 
+
+  @media screen and (max-width: 600px) {
+      height:130vh;
+    }
+
   & li {
   }
 
@@ -49,13 +54,13 @@ const NavbarUl = styled.ul`
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    font-size:calc(0.7rem + 0.8vw);
   }
 `;
 
 const NavbarLi = styled.li`
   position: relative;
   z-index: 1;
-  font-size: calc(1.1rem + 0.6vw);
   margin-bottom: calc(1vh + 1vw);
   font-size: calc(0.8rem + 0.5vw);
   cursor: pointer;
