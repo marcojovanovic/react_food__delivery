@@ -119,7 +119,7 @@ const CreativeDiv = styled.div`
     }
   }
   @media screen and (max-width: 500px) {
-    transform: translate(-10%, 80%) rotate(-20deg);
+    transform: translate(-40%, 30%) rotate(-20deg);
     width: 13rem;
     height: 13rem;
 

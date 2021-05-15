@@ -1,11 +1,13 @@
 import React from 'react';
+
 import ReactMapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import styled from 'styled-components';
 
 import {FoodContext} from '../context'
 
+
 function Location() {
- 
+
   const {viewport, setViewport, showPopup, togglePopup,navControlStyle} = React.useContext(FoodContext)
 
   return (

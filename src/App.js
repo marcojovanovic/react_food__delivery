@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+
 import Home from './pages/Home';
 import React from 'react';
 import Location from './pages/Location';
@@ -14,7 +14,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import { FoodContext } from './context';
 
 function App() {
-  const { LightTheme, DarkTheme, themes, theme } = React.useContext(FoodContext);
+  const { themes, theme } = React.useContext(FoodContext);
 
   return (
     <>

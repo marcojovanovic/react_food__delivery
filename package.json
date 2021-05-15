@@ -13,7 +13,7 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.4.2",
     "react-icons": "^4.2.0",
-    "react-map-gl": "^6.1.14",
+    "react-map-gl": "^6.1.15",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
@@ -39,7 +39,9 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "not chrome < 51",
+      "not safari < 10"
     ],
     "development": [
       "last 1 chrome version",
