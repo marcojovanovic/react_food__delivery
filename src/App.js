@@ -8,8 +8,7 @@ import Products from './pages/Products';
 import Page404 from './pages/Page404';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './theme/globalStyle';
-import 'mapbox-gl/dist/mapbox-gl.css'
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import { FoodContext } from './context';
 
@@ -21,13 +20,20 @@ function App() {
       <Router>
         <GlobalStyle />
         <ThemeProvider theme={themes[theme]}>
-         
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/location" component={Location} />
             <Route exact path="/products" component={Products} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/*" component={Page404} />
+            <Route
+              path="/dokumentacija"
+              component={() => {
+                window.location.href =
+                  'https://github.com/marcojovanovic/react_food__delivery';
+                return null;
+              }}
+            />
           </Switch>
         </ThemeProvider>
       </Router>
