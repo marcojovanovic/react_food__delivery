@@ -83,13 +83,13 @@ const FoodProvider = ({ children }) => {
     }
   };
 
+  const icon = theme === 'dark' ? <HiMoon size={40} /> : <CgSun size={40} />;
+
   // sidebar toggle function
 
   const bringBackSide = () => {
     setSidebar(!sidebar);
   };
-
-  const icon = theme === 'dark' ? <HiMoon size={40} /> : <CgSun size={40} />;
 
   // Product page filtering
 
@@ -142,8 +142,6 @@ const FoodProvider = ({ children }) => {
     reset();
   };
 
-
-
   return (
     <FoodContext.Provider
       value={{
@@ -172,7 +170,7 @@ const FoodProvider = ({ children }) => {
         setSidebar,
         bringBackSide,
         loading,
-        setLoading
+        setLoading,
       }}
     >
       {children}

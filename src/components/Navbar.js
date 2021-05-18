@@ -17,7 +17,7 @@ function Navbar() {
           <Link onClick={()=> setSidebar(false)}  to="/contact">Naruci Hranu</Link>
         </NavbarLi>
         <NavbarLi>
-          <Link onClick={()=> setSidebar(false)}  to="/products">Menu</Link>
+          <Link onClick={()=> setSidebar(false)}  to="/products">Meni </Link>
         </NavbarLi>
         <NavbarLi>
           <Link onClick={()=> setSidebar(false)}  to="/location">Nasa Lokacija</Link>
