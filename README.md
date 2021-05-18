@@ -5,9 +5,9 @@
 
 ```
 
-#dark/light mode, 
-#firebase, 
-#push form data to firebase,
+ #dark/light mode, 
+ #firebase, 
+ #push form data to firebase,
  #react map, 
  #react map popup, 
  #react map markers, 
@@ -46,14 +46,12 @@
 
 
 
-
+> Odmah da naglasim da projekat nije preuzet sa nekog YouTube tutorijala ili kursa. 
+  Obicno se na nekog ko konkurise za praksu ili junior poslove donekle sumnja da je maznuo projekat sa nekog kursa i postavio kao svoj. Kandidat za posao slusa savet sa YouTuba i za dan copy/paste odradi nekoliko projekata i spreman je za posao !  
 
 ## Mapbox fix
 ---
 
-
-> Odmah da naglasim da projekat nije preuzet sa nekog YouTube tutorijala ili kursa. 
-  Obicno se na nekog ko konkurise za praksu ili junior poslove donekle sumnja da je maznuo projekat sa nekog kursa i postavio kao svoj. Kandidat za posao slusa savet sa YouTuba i za dan copy/paste odradi nekoliko projekata i spreman je za posao 
 
  >Zelim da naglasim da svi koji koriste ###react-map-gl ili mapbox module imace problem. Naime, u lokalnom okruzenju sve izgleda dobro, ali prilikom npm run build projekta mapa, se nece videti vec samo markeri ukoliko ih imate. Svakako da
 
@@ -132,7 +130,7 @@ App.js
 ---
 
 
-> Pre pocetka projekta sam pravio plan sta cu raditi i nekako mi se cinilo da bi ovo bilo simpaticno resenje koje bi dalo vrednost projektu. Kako se je tema projekta isporuka hrane, imalo bi smisla korisniku dati lokaciju firme, tako da bi imao predstavu za koliko moze da ocekuje da mu se izvrsi isporuka. Zadovoljan sam sa dokumentacijom mapbox biblioteke, no bug prilikom build mi je zaista oduzeo dosta vremena, cak sam pojedine strane brze uradio neko sto sam resio ovaj npm run build problem.
+ Pre pocetka projekta sam pravio plan sta cu raditi i nekako mi se cinilo da bi ovo bilo simpaticno resenje koje bi dalo vrednost projektu. Kako se je tema projekta isporuka hrane, imalo bi smisla korisniku dati lokaciju firme, tako da bi imao predstavu za koliko moze da ocekuje da mu se izvrsi isporuka. Zadovoljan sam sa dokumentacijom mapbox biblioteke, no bug prilikom build mi je zaista oduzeo dosta vremena, cak sam pojedine strane brze uradio neko sto sam resio ovaj npm run build problem.
 
 Gore sam napisao koja dokumentacija je bila korisna da se napravi ova strana
 
@@ -140,10 +138,11 @@ Gore sam napisao koja dokumentacija je bila korisna da se napravi ova strana
 
 ### Contact Page
 
-
+Moze se zapaziti da se pri radu sa formama najpre preporucuje rad sa modulima kao sto su Formik i use-hook-form pre nego klasicano obezbedjivanje formi koristeci useRef hook ili kontorlisane forme preko state. 
+Tako sam odlucio da istrazim ovu temu, dokumentaciju i nasao do zaista zadovoljavajuceg resenja, tako da cu uvek u radu sa formom koristiti use-hook-form, prakticno je i jednostavno
+Error handling je izvanredan
 ---
 ```
-
 
 
 const {
@@ -156,15 +155,35 @@ const {
   });
 
 
-Moze se zapaziti da se pri radu sa formama najpre preporucuje rad sa modulima kao sto su Formik i use-hook-form pre nego klasicano obezbedjivanje formi koristeci useRef hook ili kontorlisane forme preko state. Tako sam odlucio da istrazim ovu temu, dokumentaciju i nasao do zaista zadovoljavajuceg resenja, tako da cu uvek u radu sa formom koristiti use-hook-form, prakticno je i jednostavno
-Error handling je izvanredan
+
+```
+
+### Firebase 
+
+```
+ const pushToFirebase = async (data) => {
+    await orderFirestore
+      .collection('orders')
+      .add({
+        ...data,
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    notify();
+    reset();
+  };
+
 ```
 
 ### Product Page
 ---
-```
+
 Da bismo prikazali hranu koju bi klijent mogao da naruci, morao sam prethodno da pripremim u data.js fajlu, zatim prosto izlistavamo i prikazujemo hranu kao i njene kategorije. Naposletku obezbedjujemo filtriranje hrane, jer ako bismo u praksi imali prikaz stotinak vrsta hrane, onda bi korisniku bila potrebna pomoc u pregledu
 
 Za ovakav tip projekta koji nema neku extra tezinu smatrao sam da bi bio "overkill" da sada aktiviram neku bazu podataka ili serverless, prilicno sam vremena potrosio na react-mapbox debbuging tako da sam odlucio da idem dalje bez neke komplikovanije arhitekture 
 
-```
+
