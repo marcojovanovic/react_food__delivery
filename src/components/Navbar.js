@@ -11,7 +11,7 @@ function Navbar() {
     <>
       <NavbarUl sidebar={sidebar}>
         <NavbarLi>
-          <Link onClick={()=> setSidebar(false)}  to="/dokumentacija">Dokumentacija</Link>
+        <Link to={{ pathname: "https://github.com/marcojovanovic/react_food__delivery" }} target="_blank" >Dokumentacija</Link>
         </NavbarLi>
         <NavbarLi>
           <Link onClick={()=> setSidebar(false)}  to="/contact">Naruci Hranu</Link>

@@ -26,14 +26,6 @@ function App() {
             <Route exact path="/products" component={Products} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/*" component={Page404} />
-            <Route
-              path="/dokumentacija"
-              component={() => {
-                window.location.href =
-                  'https://github.com/marcojovanovic/react_food__delivery';
-                return null;
-              }}
-            />
           </Switch>
         </ThemeProvider>
       </Router>
