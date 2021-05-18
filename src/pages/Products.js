@@ -145,10 +145,11 @@ const Loader = styled.div`
 
   & div {
     position: absolute;
-    border: 4px solid #ee8824;
+    border: 5px solid #ee8824;
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    
   }
 
   & div:nth-child(2) {
@@ -157,8 +158,8 @@ const Loader = styled.div`
 
   @keyframes lds-ripple {
     0% {
-      top: 36px;
-      left: 36px;
+      top: 80px;
+      left: 80px;
       width: 0;
       height: 0;
       opacity: 1;
@@ -166,8 +167,8 @@ const Loader = styled.div`
     100% {
       top: 0px;
       left: 0px;
-      width: 72px;
-      height: 72px;
+      width: 160px;
+      height: 160px;
       opacity: 0;
     }
   }
