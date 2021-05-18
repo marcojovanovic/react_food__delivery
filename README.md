@@ -53,7 +53,7 @@
 ---
 
 
- >Zelim da naglasim da svi koji koriste ###react-map-gl ili mapbox module imace problem. Naime, u lokalnom okruzenju sve izgleda dobro, ali prilikom npm run build projekta mapa, se nece videti vec samo markeri ukoliko ih imate. Svakako da
+ >Zelim da naglasim da svi koji koriste ###react-map-gl ili mapbox module imace problem. Naime, u lokalnom okruzenju sve izgleda dobro, ali nakon sto uradite npm run build projekta mapa. Mapa se vise nece videti vec samo markeri ukoliko ih imate. 
 
 ```
 Tu je Google morao pomoci, ali i tamo ima desetak razlicih resenja, jedno je konacno dalo rezultat.
@@ -70,7 +70,7 @@ Ovo ostavljam kao podsetnik za sebe ako se budem bavio bibliotekom, ali i za ono
 ## Lazy loading (Code Splliting)  Home Page
 ---
 
-> Primer kako smo centralnu sliku na pocetnoj stani hteli da obezbedimo bolji loading, tako da korisnik ne stekne los utisak nakon sto poseti nasu pocetnu stranu
+ Primer kako smo centralnu sliku na pocetnoj stani hteli da obezbedimo bolji loading, tako da korisnik ne stekne los utisak nakon sto poseti nasu pocetnu stranu
 
 ```
 const HomeMainImage = lazy(() => import('../components/HomeMainImage'));
@@ -137,11 +137,12 @@ Gore sam napisao koja dokumentacija je bila korisna da se napravi ova strana
 
 
 ### Contact Page
+---
 
 Moze se zapaziti da se pri radu sa formama najpre preporucuje rad sa modulima kao sto su Formik i use-hook-form pre nego klasicano obezbedjivanje formi koristeci useRef hook ili kontorlisane forme preko state. 
 Tako sam odlucio da istrazim ovu temu, dokumentaciju i nasao do zaista zadovoljavajuceg resenja, tako da cu uvek u radu sa formom koristiti use-hook-form, prakticno je i jednostavno
 Error handling je izvanredan
----
+
 ```
 
 
@@ -182,7 +183,8 @@ const {
 ### Product Page
 ---
 
-Da bismo prikazali hranu koju bi klijent mogao da naruci, morao sam prethodno da pripremim u data.js fajlu, zatim prosto izlistavamo i prikazujemo hranu kao i njene kategorije. Naposletku obezbedjujemo filtriranje hrane, jer ako bismo u praksi imali prikaz stotinak vrsta hrane, onda bi korisniku bila potrebna pomoc u pregledu
+Da bismo prikazali hranu koju bi klijent mogao da naruci, morao sam prethodno da pripremim poseban fajl sa kojim mogu da radim i manipulisem podacima. Taj fajl je  data.js 
+Radili smo sa tim fajlom tako smo smo najpre prosto izlistavali i prikazali hranu kao i njene kategorije. Naposletku obezbedjujemo filtriranje hrane, jer ako bismo u praksi imali prikaz stotinak vrsta hrane, onda bi korisniku bila potrebna pomoc u pregledu
 
 Za ovakav tip projekta koji nema neku extra tezinu smatrao sam da bi bio "overkill" da sada aktiviram neku bazu podataka ili serverless, prilicno sam vremena potrosio na react-mapbox debbuging tako da sam odlucio da idem dalje bez neke komplikovanije arhitekture 
 
