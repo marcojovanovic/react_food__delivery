@@ -12,7 +12,11 @@ function Products() {
     FoodContext
   );
 
- 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 2000);
+  }, []);
 
   return (
     <FoodMainWrapper back={foodImage}>
@@ -53,7 +57,6 @@ const FoodMainWrapper = styled.div`
   background-size: cover;
   margin: auto;
   padding: 4vh 2vw;
-
 `;
 const FoodMainTitle = styled.h1`
   text-align: center;
@@ -146,8 +149,6 @@ const Loader = styled.div`
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-    
-    
   }
 
   & div:nth-child(2) {
