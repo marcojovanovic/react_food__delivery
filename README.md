@@ -14,7 +14,8 @@
  #filtering, 
  #code splitting 
  #lazy loading 
- #yup #context api 
+ #context api 
+ #yup 
  #use-hook-form 
  #error handling #deployment 
  #notify
@@ -73,7 +74,13 @@ Ovo ostavljam kao podsetnik za sebe ako se budem bavio bibliotekom, ali i za ono
  Primer kako smo centralnu sliku na pocetnoj stani hteli da obezbedimo bolji loading, tako da korisnik ne stekne los utisak nakon sto poseti nasu pocetnu stranu
 
 ```
+Import fajla
+
 const HomeMainImage = lazy(() => import('../components/HomeMainImage'));
+
+
+dole u JSX
+
       <Suspense fallback={''}>
         <HomeMainImage />
       </Suspense>
@@ -97,6 +104,7 @@ App.js
   <ThemeProvider theme={themes[theme]}></ThemeProvider>
 
 
+context.js
 
   const LightTheme = {
     pageBackground: '#f5f5f5',
