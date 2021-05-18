@@ -1,11 +1,23 @@
-# Dokumentacija Food Delivery Projekta
+# Dokumentacija 
 ---
 
 ### Osnovne funkcionalnosti projekta
 
 ```
 
-#dark/light mode, #firebase, #push form data to firebase, #react map, #react map popup, #react map markers, #filtering, #code splitting #lazy loading #yup #context api #use-hook-form #error handling #deployment 
+#dark/light mode, 
+#firebase, 
+#push form data to firebase,
+ #react map, 
+ #react map popup, 
+ #react map markers, 
+ #filtering, 
+ #code splitting 
+ #lazy loading 
+ #yup #context api 
+ #use-hook-form 
+ #error handling #deployment 
+ #notify
 
 ```
 
@@ -39,10 +51,12 @@
 ## Mapbox fix
 ---
 
-```
-Odmah da naglasim da projekat nije preuzet sa nekog YouTube tutorijala ili kursa.  Zelim da naglasim da svi koji koriste ###react-map-gl ili mapbox module imace problem. Naime, u lokalnom okruzenju sve izgleda dobro, ali prilikom npm run build projekta mapa, se nece videti vec samo markeri ukoliko ih imate. Svakako da
 
-```
+> Odmah da naglasim da projekat nije preuzet sa nekog YouTube tutorijala ili kursa. 
+  Obicno se na nekog ko konkurise za praksu ili junior poslove donekle sumnja da je maznuo projekat sa nekog kursa i postavio kao svoj. Kandidat za posao slusa savet sa YouTuba i za dan copy/paste odradi nekoliko projekata i spreman je za posao 
+
+ >Zelim da naglasim da svi koji koriste ###react-map-gl ili mapbox module imace problem. Naime, u lokalnom okruzenju sve izgleda dobro, ali prilikom npm run build projekta mapa, se nece videti vec samo markeri ukoliko ih imate. Svakako da
+
 ```
 Tu je Google morao pomoci, ali i tamo ima desetak razlicih resenja, jedno je konacno dalo rezultat.
 
@@ -58,6 +72,8 @@ Ovo ostavljam kao podsetnik za sebe ako se budem bavio bibliotekom, ali i za ono
 ## Lazy loading (Code Splliting)  Home Page
 ---
 
+> Primer kako smo centralnu sliku na pocetnoj stani hteli da obezbedimo bolji loading, tako da korisnik ne stekne los utisak nakon sto poseti nasu pocetnu stranu
+
 ```
 const HomeMainImage = lazy(() => import('../components/HomeMainImage'));
       <Suspense fallback={''}>
@@ -69,8 +85,9 @@ const HomeMainImage = lazy(() => import('../components/HomeMainImage'));
 ## Dark/Light Mode Home Page
 ---
 
-> Styled components su mi dale ideju kako da uradim dark/light mode 
-  Koristeci theme provider koji su deo theming styled components stavljajuci u app.js naseg projekta obezbedili smo da samo varijable iz contexta.js prosledjujemo do pojedinacnih komponenti i da ako prosledimo nekoj stayled componenti (div, img, link, ul ...) props ona moze da koristi theming
+> Styled components su mi dale ideju kako da uradim dark/light mode.
+
+  Koristeci theme provider koji su deo theming styled components stavljajuci u app.js naseg projekta. Tako mozemo da pristupimo pojedinim propertima naseg theme objekta sa bilo kog mesta u aplikaciji. Onda mi samo ako prosledimo nekoj stayled componenti (div, img, link, ul ...) props i ona moze da koristi theming
 
 ```
 
@@ -111,27 +128,36 @@ App.js
 ```
 
 
-
-```
-Razlog zbog cega koristim lazy loading je taj, da prilikom dolaska na pocetnu stranu, jako los utisak na korisnika ostavlja kada se neka slika dugo loaduje i zato sam smatrao da bi lazy loading resio i poboljskao korisnicko iskustvo
-
-```
-
 ### My Location Page
 ---
 
-```
-Pre pocetka projekta sam pravio plan sta cu raditi i nekako mi se cinilo da bi ovo bilo simpaticno resenje koje bi dalo vrednost projektu. Kako se je tema projekta isporuka hrane, imalo bi smisla korisniku dati lokaciju firme, tako da bi imao predstavu za koliko moze da ocekuje da mu se izvrsi isporuka. Zadovoljan sam sa dokumentacijom mapbox biblioteke, no bug prilikom build mi je zaista oduzeo dosta vremena, cak sam pojedine strane brze uradio neko sto sam resio ovaj npm run build problem.
+
+> Pre pocetka projekta sam pravio plan sta cu raditi i nekako mi se cinilo da bi ovo bilo simpaticno resenje koje bi dalo vrednost projektu. Kako se je tema projekta isporuka hrane, imalo bi smisla korisniku dati lokaciju firme, tako da bi imao predstavu za koliko moze da ocekuje da mu se izvrsi isporuka. Zadovoljan sam sa dokumentacijom mapbox biblioteke, no bug prilikom build mi je zaista oduzeo dosta vremena, cak sam pojedine strane brze uradio neko sto sam resio ovaj npm run build problem.
 
 Gore sam napisao koja dokumentacija je bila korisna da se napravi ova strana
 
-```
+
 
 ### Contact Page
+
+
 ---
 ```
+
+
+
+const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+
 Moze se zapaziti da se pri radu sa formama najpre preporucuje rad sa modulima kao sto su Formik i use-hook-form pre nego klasicano obezbedjivanje formi koristeci useRef hook ili kontorlisane forme preko state. Tako sam odlucio da istrazim ovu temu, dokumentaciju i nasao do zaista zadovoljavajuceg resenja, tako da cu uvek u radu sa formom koristiti use-hook-form, prakticno je i jednostavno
- Prikaz greske me je odusevio
+Error handling je izvanredan
 ```
 
 ### Product Page
