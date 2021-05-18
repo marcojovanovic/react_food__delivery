@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 
 import styled from 'styled-components';
 import foodImage from '../img/candy1.png';
@@ -8,11 +8,17 @@ import { FoodContext } from '../context';
 const FoodMenu = lazy(() => import('../components/FoodMenu'));
 
 function Products() {
-  const { uniqueCategories, filtered } = React.useContext(FoodContext);
+  const { uniqueCategories, filtered, loading, setLoading } = React.useContext(
+    FoodContext
+  );
+
+ 
 
   return (
     <FoodMainWrapper back={foodImage}>
-      <FoodMainTitle>Sortiraj hranu u prodavnici !!!</FoodMainTitle>
+      <FoodMainTitle>
+        Koristi filtere, da izaberes svoju hranu !!!
+      </FoodMainTitle>
       <ButtonWrapper>
         {uniqueCategories.map((item, index) => {
           return (
@@ -22,10 +28,18 @@ function Products() {
           );
         })}
       </ButtonWrapper>
-
-      <Suspense fallback={''}>
-        <FoodMenu />
-      </Suspense>
+      {loading ? (
+        <Suspense fallback={''}>
+          <FoodMenu />
+        </Suspense>
+      ) : (
+        <LoaderWrapper>
+          <Loader>
+            <div></div>
+            <div></div>
+          </Loader>
+        </LoaderWrapper>
+      )}
     </FoodMainWrapper>
   );
 }
@@ -39,8 +53,8 @@ const FoodMainWrapper = styled.div`
   background-size: cover;
   margin: auto;
   padding: 4vh 2vw;
-`;
 
+`;
 const FoodMainTitle = styled.h1`
   text-align: center;
   color: white;
@@ -110,6 +124,51 @@ const FoodButton = styled.button`
   }
   &:hover::after {
     transition-delay: 0s, 0.25s, 0s;
+  }
+`;
+
+const LoaderWrapper = styled.div`
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const Loader = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 400px;
+
+  & div {
+    position: absolute;
+    border: 4px solid #ee8824;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    
+    
+  }
+
+  & div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+
+  @keyframes lds-ripple {
+    0% {
+      top: 36px;
+      left: 36px;
+      width: 0;
+      height: 0;
+      opacity: 1;
+    }
+    100% {
+      top: 0px;
+      left: 0px;
+      width: 72px;
+      height: 72px;
+      opacity: 0;
+    }
   }
 `;
 

@@ -14,8 +14,5 @@ firebase.initializeApp(firebaseConfig);
  
 const orderFirestore = firebase.firestore();
 
-
- 
- const provider = new firebase.auth.GoogleAuthProvider() // auth ako koristis
  
 export { orderFirestore };

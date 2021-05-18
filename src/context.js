@@ -32,6 +32,7 @@ const FoodProvider = ({ children }) => {
   const [foodItems, setFoodItems] = useState(products);
   const [menuItems, setMenuItems] = useState(products);
   const [sidebar, setSidebar] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // Location
 
@@ -82,7 +83,7 @@ const FoodProvider = ({ children }) => {
     }
   };
 
-// sidebar toggle function
+  // sidebar toggle function
 
   const bringBackSide = () => {
     setSidebar(!sidebar);
@@ -123,7 +124,6 @@ const FoodProvider = ({ children }) => {
 
   const notify = () => toast(<Notification />);
 
-
   // push contact information to firestore
 
   const pushToFirebase = async (data) => {
@@ -141,6 +141,8 @@ const FoodProvider = ({ children }) => {
     notify();
     reset();
   };
+
+
 
   return (
     <FoodContext.Provider
@@ -169,6 +171,8 @@ const FoodProvider = ({ children }) => {
         sidebar,
         setSidebar,
         bringBackSide,
+        loading,
+        setLoading
       }}
     >
       {children}

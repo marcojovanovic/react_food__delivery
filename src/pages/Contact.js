@@ -7,7 +7,6 @@ import { FoodContext } from '../context';
 function Contact() {
   const {
     pushToFirebase,
-    toast,
     ToastContainer,
     register,
     errors,
