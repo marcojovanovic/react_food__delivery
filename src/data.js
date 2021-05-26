@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    image: '/assets/products/bakin.png',
+    image: 'https://i.ibb.co/mHs1z3M/bakin.png',
     name: 'Bakin kolac',
     category: 'desert',
     cena: 120,
@@ -9,28 +9,28 @@ export const products = [
 
   {
     id: 2,
-    image: '/assets/products/cock.png',
+    image: 'https://i.ibb.co/MgDNfCQ/cock.png',
     name: 'Coca-Cola',
     category: 'sokovi',
     cena: 180,
   },
   {
     id: 3,
-    image: '/assets/products/dobos torta.png',
+    image: 'https://i.ibb.co/cxN4JPf/dobos-torta.png',
     name: 'Dobos torta',
     category: 'desert',
     cena: 320,
   },
   {
     id: 4,
-    image: '/assets/products/corn.png',
+    image: 'https://i.ibb.co/WypJ7Z0/corn.png',
     name: 'Kokice',
     category: 'brza-hrana',
     cena: 100,
   },
   {
     id: 5,
-    image: '/assets/products/giros.png',
+    image: 'https://i.ibb.co/vv86Pb5/giros.png',
     name: 'Giros',
     category: 'brza-hrana',
     cena: 220,
@@ -38,7 +38,7 @@ export const products = [
 
   {
     id: 6,
-    image: '/assets/products/hot dog.png',
+    image: 'https://i.ibb.co/7VqS0hH/hot-dog.png',
     name: 'Hot Dog',
     category: 'brza-hrana',
     cena: 120,
@@ -46,35 +46,35 @@ export const products = [
 
   {
     id: 7,
-    image: '/assets/products/kafa2.png',
+    image: 'https://i.ibb.co/r5N9Y2x/kafa2.png',
     name: 'Espresso',
     category: 'kafe',
     cena: 100,
   },
   {
     id: 8,
-    image: '/assets/products/pizza.png',
+    image: 'https://i.ibb.co/XspNd1k/pizza.png',
     name: 'Pizza',
     category: 'pizza',
     cena: 190,
   },
   {
     id: 9,
-    image: '/assets/products/pljeska.png',
+    image: 'https://i.ibb.co/NVg98Dx/pljeska.png',
     name: 'Pljskavica',
     category: 'brza-hrana',
     cena: 185,
   },
   {
     id: 10,
-    image: '/assets/products/slad.jpg',
+    image: 'https://i.ibb.co/5hswwQ9/slad.jpg',
     name: 'Sladoled',
     category: 'sladoled',
     cena: 105,
   },
   {
     id: 11,
-    image: '/assets/products/dona.png',
+    image: 'https://i.ibb.co/6XXVd51/dona.png',
     name: 'Krofna',
     category: 'desert',
     cena: 89,

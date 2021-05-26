@@ -80,7 +80,7 @@ function Contact() {
 const ContactContainer = styled.div`
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(${(props) => (props.back ? 'https://i.ibb.co/NY7tMzC/candy1.jpg' : 'lightblue')});
+    url(${(props) => (props.back ? props.back : 'lightblue')});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
