@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { products } from './data';
+import { products } from './data/data';
 import { orderFirestore } from './firebase/config';
 
 import { useForm } from 'react-hook-form';
